@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html class="no-js fuelux">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>E-Learning</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fuelcdn.com/fuelux/2.3/css/fuelux.min.css">
+     <script src="{% static 'js/jquery.bootstrap-duallistbox.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-duallistbox.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div id="my-wizard" class="wizard">
+            <ul class="steps">
+                <li data-target="#step1" class="active"><span class="badge badge-info">1</span>Step 1<span class="chevron"></span></li>
+                <li data-target="#step2"><span class="badge">2</span>Step 2<span class="chevron"></span></li>
+                <li data-target="#step3"><span class="badge">3</span>Step 3<span class="chevron"></span></li>
+                <li data-target="#step4"><span class="badge">4</span>Step 4<span class="chevron"></span></li>
+                <li data-target="#step5"><span class="badge">5</span>Step 5<span class="chevron"></span></li>
+            </ul>
+            <div class="actions">
+                <button class="btn btn-mini btn-prev"> <i class="icon-arrow-left"></i>Prev</button>
+                <button class="btn btn-mini btn-next" data-last="Finish">Next<i class="icon-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="step-content">
+            <div class="step-pane active" id="step1">
+                <br/>
+                Rule Profile :
+                <div class="input-group input-append dropdown combobox" data-initialize="combobox" id="myCombobox">
+                 <input class="span2" type="text">
+                  <button class="btn" data-toggle="dropdown"><i class="caret"></i></button>
+                  <ul class="dropdown-menu">
+                    <li data-value="1" data-selected="true"><a href="#">Item One</a></li>
+                    <li data-value="2"><a href="#">Item Two</a></li>
+                    <li data-value="3" data-fizz="buzz"><a href="#">Item Three</a></li>
+                    <li class="divider"></li>
+                    <li data-value="4"><a href="#">Item Four</a></li>
+                  </ul>
+                </div>
+            </div>
+            <div class="step-pane" id="step2">       
+            <div class="col-md-5">
+              <select multiple="multiple" size="10" name="duallistbox_demo2" class="demo2">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3" selected="selected">Option 3</option>
+                <option value="option4">Option 4</option>
+                <option value="option5">Option 5</option>
+                <option value="option6" selected="selected">Option 6</option>
+                <option value="option7">Option 7</option>
+                <option value="option8">Option 8</option>
+                <option value="option9">Option 9</option>
+                <option value="option0">Option 10</option>
+                <option value="option0">Option 11</option>
+                <option value="option0">Option 12</option>
+                <option value="option0">Option 13</option>
+                <option value="option0">Option 14</option>
+                <option value="option0">Option 15</option>
+                <option value="option0">Option 16</option>
+                <option value="option0">Option 17</option>
+                <option value="option0">Option 18</option>
+                <option value="option0">Option 19</option>
+                <option value="option0">Option 20</option>
+              </select>
+              <script>
+                var demo2 = $('.demo2').bootstrapDualListbox({
+                  nonSelectedListLabel: 'Non-selected',
+                  selectedListLabel: 'Selected',
+                  preserveSelectionOnMove: 'moved',
+                  moveOnSelect: false,
+                  nonSelectedFilter: 'ion ([7-9]|[1][0-2])'
+                });
+              </script>
+            </div>
+
+
+            </div>
+            <div class="step-pane" id="step3">
+                step3
+            </div>
+        </div>
+    </div>
+ 
+    <script src="https://fuelcdn.com/fuelux/2.3/loader.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('#my-wizard').on('change', function(e, data) {
+                console.log('change');
+                if(data.step===3 && data.direction==='next') {
+                    // return e.preventDefault();
+                }
+            });
+
+            $('#my-wizard').on('changed', function(e, data) {
+                console.log('changed');
+            });
+
+            $('#my-wizard').on('finished', function(e, data) {
+                console.log('finished');
+            });
+
+            $('.btn-prev').on('click', function() {
+                console.log('prev');
+            });
+
+            $('.btn-next').on('click', function() {
+                console.log('next');
+            });
+        });
+    </script>
+</body>
+</html>
