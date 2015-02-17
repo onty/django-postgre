@@ -1,5 +1,6 @@
 from django.contrib import admin
 from polls.models import Question, Choice
+from django.contrib.admin import AdminSite
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
@@ -17,6 +18,11 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['question_text']
 
-admin.site.register(Question, QuestionAdmin)
+
+class MyAdminSite(AdminSite):
+    site_header ='Poll Apps Administration'
+
+admin_site = MyAdminSite(name='admin')
+admin_site.register(Question, QuestionAdmin)
 # Register your models here.
-admin.site.register(Choice)
+#admin.site.register(Choice)
